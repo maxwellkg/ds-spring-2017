@@ -46,6 +46,8 @@ data['photo_count'] = photo_counts
 
 weeks = []
 for date in data['created']:
-  
+
 
 # finally, save the dataframe as a pickle for future use
+
+data.to_pickle('pickled_data.p')
