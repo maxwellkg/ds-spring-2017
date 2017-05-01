@@ -33,11 +33,11 @@ for feature in dummyized_features:
   data[feature] = 0
 
 for index, row in data.iterrows():
-  for feature in row['features']
+  for feature in row['features']:
     if feature in dummyized_features:
       data.loc[index, feature] = 1
 
-data.drop()
+data.drop('features', 1)
 
 
 # count the photos
