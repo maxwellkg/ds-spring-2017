@@ -68,16 +68,6 @@ for index, row in data.iterrows():
 
 data['neighborhood'] = neighborhoods
 
-# long < trlong
-# long > bllong
-# lat < trlat
-# lat > bllat
-
-# trlong > long
-# bllong < long
-# trlat > lat
-# bllat < lat
-
 
 # finally, save the dataframe as a pickle for future use
 
