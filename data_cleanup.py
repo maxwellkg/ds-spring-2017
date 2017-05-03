@@ -51,6 +51,34 @@ for create_date in data['created']:
 
 data['week'] = weeks
 
+# tag neighborhoods
+sf = pd.read_pickle('neighborhoods.p')
+
+neighborhoods = []
+
+for index, row in data.iterrows():
+  lat = row['latitude']
+  lon = row['longitude']
+
+  neighborhood = sf[(sf['trlong'] > lon) & (sf['bllong'] < lon) & (sf['trlat'] > lat) & (sf['bllat'] < lat)]['Name']
+  if len(neighborhood) > 0:
+    neighborhoods.append(neighborhood.values[0])
+  else:
+    neighborhoods.append(None)
+
+data['neighborhood'] = neighborhoods
+
+# long < trlong
+# long > bllong
+# lat < trlat
+# lat > bllat
+
+# trlong > long
+# bllong < long
+# trlat > lat
+# bllat < lat
+
+
 # finally, save the dataframe as a pickle for future use
 
 data.to_pickle('pickled_data.p')
